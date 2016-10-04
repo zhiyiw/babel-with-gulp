@@ -25,4 +25,4 @@ let ui = {
     console.log(posts);
   }
 }
-Post.findAll().then(ui.renderPosts)
+Post.findAll().then(ui.renderPosts).catch((error) => console.log(error));
