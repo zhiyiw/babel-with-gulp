@@ -9,7 +9,11 @@ let Post = {
         if(request.status >= 200 && request.status < 400) {
           resolve( JSON.parse(request.response));
         }
-      }
+      };
+
+      request.onerror = () => {
+        reject( new Error("Something went wrong on the API"));
+      };
 
       request.send();
     });
@@ -21,4 +25,4 @@ let ui = {
     console.log(posts);
   }
 }
-Post.findAll().then(ui.renderPosts);
+Post.findAll().then(ui.renderPosts)
